@@ -1,0 +1,8 @@
+cropper---图片裁剪插件
+layui---相当于bootstrap，负责布局的插件
+tinymce---副文本编辑器插件
+bootstrap.css---图表插件
+echarts.min.js---图表插件
+jquery.js---jQuery
+main.css---。。。
+template-web.js---模板引擎
