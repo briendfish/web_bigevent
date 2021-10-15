@@ -26,9 +26,9 @@ $(function() {
 // 获取用户基本信息 换了能用的接口
 function getUserInfo() {
     var data = {
-        bookname: '西游记',
-        author: '吴承恩',
-        publisher: '北京图书出版社'
+        bookname: '三国演义',
+        // bookname: window.son.$('.layui-form-item [name="author"]').val(),
+
     }
     $.ajax({
         method: 'GET',
@@ -43,7 +43,8 @@ function getUserInfo() {
                 return layui.layer.msg('获取用户信息失败！')
             }
             // 调用 renderAvatar 渲染用户头像
-            renderAvatar(res.data);
+            var data = res.data[0];
+            renderAvatar(data);
         },
         // 不论请求成功还是失败，最终都会调用 complete 回调函数
         // complete: function(res) {
@@ -63,19 +64,22 @@ function getUserInfo() {
 // 渲染用户头像
 function renderAvatar(user) {
     // 1.获取用户昵称
-    var user = user[0];
     var name = user.author || user.username;
+    console.log(name);
     // 2.设置欢迎的文本
     $('#welcome').html('欢迎&nbsp;&nbsp;' + name);
     // 3.按需渲染用户的头像
-    if (user.user_pic !== null) {
-        // 3.1 渲染图片头像
-        $('.layui-nav-img').attr('src', user.user_pic).show();
-        $('.text-avatar').hide();
-    } else {
-        // 3.2 渲染文本头像
-        $('layui-nav-img').hide();
-        var first = name[0].toUpperCase;
-        $('.text-avater').html(first).show();
-    }
+    // if (user.user_pic !== null) {
+    //     // 3.1 渲染图片头像
+    //     $('.layui-nav-img').attr('src', user.user_pic).show();
+    //     $('.text-avatar').hide();
+    // } else {
+    // 3.2 渲染文本头像
+    $('.layui-nav-img').hide();
+    // var first = name[0].toUpperCase;
+    var first = name[0];
+    console.log(first);
+    // $('.text-avater').html(first).show();
+    $('.text-avatar').html(first);
+    // }
 }
